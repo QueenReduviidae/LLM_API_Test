@@ -37,5 +37,17 @@ namespace LLM_Interface
 
             //TODO: Save chat history locally and load on change
         }
+
+        private void SendButton_Click(object sender, RoutedEventArgs e)
+        {
+            string selected = ModelCombobox.SelectedValue?.ToString() ?? "None";
+            if (selected == "None") { MessageBox.Show("No model selected, please make sure to select one before sending.", "Send Error", MessageBoxButton.OK); }
+            else
+            {
+                //Send the input text to the API using the selected Model
+                Http.Post(selected, InputText.Text);
+            }
+
+        }
     }
 }

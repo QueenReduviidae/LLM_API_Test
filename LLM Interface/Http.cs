@@ -28,5 +28,17 @@ namespace LLM_Interface
             Responses.ModelList? models = JsonConvert.DeserializeObject<Responses.ModelList>(result.Result);
             return models;
         }
+        public static Responses.PostList? Post(string model, string message)
+        {
+            string json = $"{{\"model\": \"{model}\",\"messages\": [{{\"role\": \"user\",\"content\": \"{message}\"}}]}}";
+            StringContent stringContent = new StringContent(json, Encoding.UTF8, "application/json");
+            Task<HttpResponseMessage> response = client.PostAsync("v1/chat/completions", stringContent);
+            response.Wait();
+            if (!response.IsCompletedSuccessfully) return null;
+            Task<string> result = response.Result.Content.ReadAsStringAsync();
+            result.Wait();
+            Responses.PostList? posts = JsonConvert.DeserializeObject<Responses.PostList>(result.Result);
+            return posts;
+        }
     }
 }
