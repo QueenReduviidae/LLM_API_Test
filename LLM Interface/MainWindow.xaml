@@ -13,6 +13,19 @@
         <Label x:Name="ModelLabel" Content="Model:" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" Width="75" Height="32"/>
         <TextBox x:Name="InputText" Margin="10,0,0,4" TextWrapping="Wrap" Text="Hello, World!" Width="710" Height="35" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
         <Button x:Name="SendButton" Content="Send" Margin="725,0,0,4" Height="35" Width="65" Click="SendButton_Click" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-        <ScrollViewer x:Name="ResponseViewer" Margin="10,42,10,44"/>
+        <ListView x:Name="User" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="28,48,380,48">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView x:Name="Response" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="425,48,10,48">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>

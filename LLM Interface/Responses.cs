@@ -44,7 +44,13 @@ namespace LLM_Interface
             public message message { get; set; }
             public string logprobs { get; set; }
             public string finish_reason { get; set; }
+
+            public override string ToString()
+            {
+                return message.content;
+            }
         }
+        
 
         public class PostList()
         {

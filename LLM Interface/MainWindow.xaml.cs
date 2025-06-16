@@ -45,7 +45,11 @@ namespace LLM_Interface
             else
             {
                 //Send the input text to the API using the selected Model
-                Http.Post(selected, InputText.Text);
+                Responses.PostList? response =  Http.Post(selected, InputText.Text);
+                Response.Items.Add(response.choices[0].ToString());
+                User.Items.Add(InputText.Text);
+
+
             }
 
         }
